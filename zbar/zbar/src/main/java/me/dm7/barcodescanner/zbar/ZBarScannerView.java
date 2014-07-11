@@ -93,6 +93,9 @@ public class ZBarScannerView extends BarcodeScannerView {
 
         Image barcode = new Image(width, height, "Y800");
         barcode.setData(data);
+        Rect fr = this.getFramingRectInPreview(width,height);
+        if(fr != null) 
+            barcode.setCrop(fr.left,fr.top, fr.width(), fr.height());
 
         int result = mScanner.scanImage(barcode);
 
